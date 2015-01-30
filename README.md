@@ -76,11 +76,10 @@ B1: Lấy tokens hệ thống
             
             "password": "password123"
             
-        }
+          }
         
-    }
-    
-    } 
+          }
+        } 
 
 4. Thiết lập Set "Content-Type" header
 5. Gửi yêu cầu
