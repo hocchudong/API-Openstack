@@ -11,7 +11,7 @@ Sử dụng API của Openstack có thể tạo máy ảo, tạo image và các 
 
 Để gửi các yêu cầu đến API, ta có thể sử dụng các cách thức sau: 
 
-- cURL: là một công cụ dòng lênh mà cho phép bạn gửi các yêu cầu  và nhân phản hồi theo http.
+- cURL: là một công cụ dòng lệnh mà cho phép bạn gửi các yêu cầu  và nhận phản hồi theo http.
 
 - Openstack command-line clients: Mỗi một project của Openstack cung cấp một command-line client mà cho phép bạn truy xuất vào API một cách dễ dàng. 
 
@@ -25,11 +25,11 @@ Sử dụng API của Openstack có thể tạo máy ảo, tạo image và các 
 
 Vào web store của chrome, tìm kiếm và cài đặt ứng dụng Advanced RESTclient cho trình duyệt.
 
-<img src=http://i.imgur.com/OCPcBGi.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/OCPcBGi.png width="80%" height="80%" border="1">
 
 Giao diện của ứng dụng: 
 
-<img src=http://i.imgur.com/sPeLBDt.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/sPeLBDt.png width="80%" height="80%" border="1">
 
 1. Địa chỉ url
 
@@ -41,37 +41,47 @@ Giao diện của ứng dụng:
 
 ### Sử dụng Advanced RESTClient để test Openstack API.
 
-#### 4.1 Xác thực
+####  Xác thực
 
 Openstack gồm có Block Storage API, Indentify API ... bạn có thể tham khảo theo link sau: 
 
     http://developer.openstack.org/api-ref.html
 
-Quá trình xác thực: Mỗi một yêu cầu mà gửi đến API đều yêu cầu có X-Auth-Token header. Các máy client sẽ chứa tokens này, sử dụng để gửi  đến các dịch vụ khác. Dưới đây là hình ảnh nói về quá trình xác thực. 
+Quá trình xác thực: Mỗi một yêu cầu mà gửi đến API đều yêu cầu có X-Auth-Token header. Các máy client sẽ chứa tokens này, sử dụng để gửi  đến các dịch vụ khác. Qúa trình xác thực được thể hiện ở đây: 
 
-<img src=http://i.imgur.com/iUN45CW.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/iUN45CW.png width="80%" height="80%" border="1">
 
 
-#### 4.2 Các bước tiến hành 
+####  Các bước tiến hành 
 
 Trong phần này mình sẽ demo cách list ra các tenants trong Openstack
 
 B1: Lấy tokens hệ thống
 
-<img src=http://i.imgur.com/rNsQXkY.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/YZaPdrJ.png width="80%" height="80%" border="1">
 
 1. URL gồm có địa chỉ của controller, port keystone service và API v2
 2. Yêu cầu sử dụng giao thức POST
 3. Chèn data gồm có username, password, tennantname
-{
-    "auth": {
-        "tenantName": "admin",
-        "passwordCredentials": {
+
+    {
+    
+        "auth": {
+        
+            "tenantName": "admin",
+            
+            "passwordCredentials": {
+            
             "username": "admin",
+            
             "password": "password123"
+            
         }
+        
     }
-} 
+    
+    } 
+
 4. Thiết lập Set "Content-Type" header
 5. Gửi yêu cầu
 
@@ -79,7 +89,7 @@ Phản hồi về 400 hoặc 401 HTTP có nghĩa là request sai URL hoặc data
 
 Nếu thành công ta sẽ nhận được tokens của user như hình ảnh dưới đây: 
 
-<img src=http://i.imgur.com/aybKfiN.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/rNsQXkY.png width="80%" height="80%" border="1">
 
 B2: List các tenant 
 
@@ -87,11 +97,11 @@ B2: List các tenant
 
 Xem mô tả lại API của list tenants
 
-<img src=http://i.imgur.com/s37Yvg3.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/aybKfiN.png width="60%" height="60%" border="1">
 
 Sử dụng Advaned REST Client lấy về danh sách các tenant:
 
-<img src=http://i.imgur.com/ghPZPWe.png width="60%" height="60%" border="1">
+<img src=http://i.imgur.com/1Qmx6E4.png width="80%" height="80%" border="1">
 
 1. URL (ô số 1) gồm địa chỉ của controller, API v2.0/tenants
 2. List tenant sử dụng phương thức GET
