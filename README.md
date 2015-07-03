@@ -63,6 +63,7 @@ B1: Lấy tokens hệ thống
 1. URL gồm có địa chỉ của controller, port keystone service và API v2
 2. Yêu cầu sử dụng giao thức POST
 3. Chèn data gồm có username, password, tennantname
+```sh
 
     {
     
@@ -80,6 +81,8 @@ B1: Lấy tokens hệ thống
         
           }
         } 
+
+````
 
 4. Thiết lập Set "Content-Type" header
 5. Gửi yêu cầu
